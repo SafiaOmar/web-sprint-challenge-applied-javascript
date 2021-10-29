@@ -73,3 +73,5 @@ Be prepared to demonstrate your understanding of this week's concepts by answeri
 
 5. What is a component?
    Answer: Components are independent and reusable bits of code. They serve the same purpose as JavaScript functions, but work in isolation and return HTML.
+
+   done.

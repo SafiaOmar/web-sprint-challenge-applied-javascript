@@ -20,7 +20,7 @@ const Card = (article) => {
   // </div>
   //
 
-// instantiating the elements
+// setting up my
 const articleCard = document.createElement('div');
 const headlineSec = document.createElement('div');
 const authorSec = document.createElement('div');
