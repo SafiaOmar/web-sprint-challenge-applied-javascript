@@ -1,5 +1,3 @@
-import axios from "axios"
-const cardContainer = document.querySelector(".cards-container")
 const Card = (article) => {
   // TASK 5
   // ---------------------
@@ -20,34 +18,34 @@ const Card = (article) => {
   // </div>
   //
 
-const card =document.createElement(`div`)
-const headline = document.createElement(`div`)
-const author = document.createElement(`div`)
-const imgContainer = document.createElement(`div`)
-const authorPhoto = document.createElement(`img`)
-const authorName = document.createElement(`span`)
+  let cardDiv = document.createElement("div")
+  let headlineDiv = document.createElement("div")
+  let authorDiv = document.createElement("div")
+  let imgContainer = document.createElement("div") 
+  let authorImg = document.createElement("img")
+  let authorName = document.createElement("span")
 
-card.appendChild(headline)
-  card.appendChild(author)
-  author.appendChild(imgContainer)
-  imgContainer.appendChild(authorPhoto)
-  author.appendChild(authorName)
+  cardDiv.appendChild(headlineDiv)
+  cardDiv.appendChild(authorDiv)
+  authorDiv.appendChild(imgContainer)
+  imgContainer.appendChild(authorImg)
+  authorDiv.appendChild(authorName)
 
-  card.classList.add('card')
-  headline.classList.add('headline')
-  author.classList.add('author')
-  imgContainer.classList.add('imgContainer')
-  authorPhoto.classList.add("authorPhoto")
-  authorName.classList.add('authorName')
+  cardDiv.classList.add("card")
+  headlineDiv.classList.add("headline")
+  authorDiv.classList.add("author")
+  imgContainer.classList.add("img-container")
 
-  headline.textContent = article.headline
-  author.textContent = article.author
-  authorPhoto.textContent = article.authorPhoto
-  authorName.textContent = article.authorName
-
-  headline.addEventListener('click', ()=>{
-    console.log(headline);
+  headlineDiv.textContent = article.headline
+  authorName.textContent = article.author
+  authorImg.setAttribute("src", article.authorPhoto)
+  
+  cardDiv.addEventListener("click", () => {
+    cardDiv.classList.toggle(console.log(headlineDiv))
   })
+
+  return cardDiv;
+
 }
 
 const cardAppender = (selector) => {
@@ -60,21 +58,21 @@ const cardAppender = (selector) => {
   // Create a card from each and every article object in the response, using the Card component.
   // Append each card to the element in the DOM that matches the selector passed to the function.
   //
-  axios.get(`http://localhost:5000/api/articles`)
-  .then(res =>{
-    res.data.forEach(item =>{
-      const card = Card(item)
-      cardContainer.appendChild(card)
-    })
-  })
-  .catch(err => {
-    console.log(err)
-  })
-  .finally(() => {
-    console.log('done')
+ 
+  let results = axios.get(`https://lambda-times-api.herokuapp.com/articles`)
+  results.then((value)=>{
+
+    let list = value.data.articles
+    for(let key in list){
+      list[key].forEach(element => {
+        let test = Card(element)
+        let cardContainer = document.querySelector(selector)
+        cardContainer.appendChild(test)
+      });
+    }
+
   })
 
 }
-
 
 export { Card, cardAppender }

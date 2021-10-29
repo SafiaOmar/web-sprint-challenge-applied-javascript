@@ -1,4 +1,3 @@
-const headerContainer = document.querySelector(`.header-container`)
 const Header = (title, date, temp) => {
   // TASK 1
   // ---------------------
@@ -13,23 +12,26 @@ const Header = (title, date, temp) => {
   //  </div>
   //
 
-const header = document.createElement(`div`)
-const Date = document.createElement(`span`)
-const Title = document.createElement(`h1`)
-const Temp = document.createElement(`span`)
+  const headerDiv = document.createElement("div");
+  const dateSpan = document.createElement("span");
+  const titleH1 = document.createElement("h1");
+  const tempSpan = document.createElement("span");
 
-Title.textContent = Title
-Date.textContent = Date
-Temp.textContent = Temp
+  headerDiv.appendChild(dateSpan);
+  headerDiv.appendChild(titleH1);
+  headerDiv.appendChild(tempSpan);
 
-console.log(header)
+  headerDiv.classList.add("header")
+  dateSpan.classList.add("date")
+  tempSpan.classList.add("temp")
 
-header.appendChild(date)
-header.appendChild(title)
-header.appendChild(temp)
-
-return header
+  dateSpan.textContent = date
+  tempSpan.textContent = temp
+  titleH1.textContent = title
+  
+  return headerDiv;
 }
+
 
 const headerAppender = (selector) => {
   // TASK 2
@@ -38,8 +40,9 @@ const headerAppender = (selector) => {
   // It should create a header using the Header component above, passing arguments of your choosing.
   // It should append the header to the element in the DOM that matches the given selector.
   //
-const header =Header ("Lambda Times", "October 29,2021", "Hallowen")
-headerContainer.appendChild(header)
+  let headerFunc = Header("Lambda Times", "February 12, 2021", "70")
+  let headerPortion = document.querySelector(selector)
+  headerPortion.appendChild(headerFunc)
 
 }
 
