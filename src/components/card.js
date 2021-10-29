@@ -34,7 +34,7 @@ const Card = (article) => {
 
   cardDiv.classList.add("card")
   headlineDiv.classList.add("headline")
-  authorDiv.classList.add("Safia")
+  authorDiv.classList.add("author")
   imgContainer.classList.add("img-container")
 
   headlineDiv.textContent = article.headline
