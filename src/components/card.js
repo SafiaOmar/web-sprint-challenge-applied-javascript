@@ -60,7 +60,7 @@ const cardAppender = (selector) => {
   // Append each card to the element in the DOM that matches the selector passed to the function.
   //
  
-  let results = axios.get(`https://lambda-times-api.herokuapp.com/articles`)
+  let results = axios.get(`http://localhost:5000/api/articles`)
 
   results.then((value)=>{
 
