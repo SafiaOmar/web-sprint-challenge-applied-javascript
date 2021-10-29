@@ -1,3 +1,4 @@
+const headerContainer = document.querySelector(`.header-container`)
 const Header = (title, date, temp) => {
   // TASK 1
   // ---------------------
@@ -11,6 +12,23 @@ const Header = (title, date, temp) => {
   //    <span class="temp">{ temp }</span>
   //  </div>
   //
+
+const header = document.createElement(`div`)
+const Date = document.createElement(`span`)
+const Title = document.createElement(`h1`)
+const Temp = document.createElement(`span`)
+
+Title.textContent = Title
+Date.textContent = Date
+Temp.textContent = Temp
+
+console.log(header)
+
+header.appendChild(date)
+header.appendChild(title)
+header.appendChild(temp)
+
+return header
 }
 
 const headerAppender = (selector) => {
